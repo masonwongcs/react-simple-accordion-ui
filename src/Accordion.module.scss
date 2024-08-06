@@ -1,0 +1,58 @@
+.accordionWrapper {
+  .accordionItem {
+    &.active {
+      .accordionHeader {
+        .accordionToggle {
+          .accordionToggleIcon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+      .accordionContent {
+        opacity: 1;
+        visibility: visible;
+        grid-template-rows: 1fr;
+      }
+    }
+
+    .accordionHeader {
+      position: relative;
+
+      .accordionToggle {
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        background: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: none;
+        display: flex;
+        align-items: center;
+
+        .accordionToggleIcon {
+          margin-left: auto;
+          transition: 200ms ease-in-out;
+        }
+      }
+    }
+
+    .accordionContent {
+      opacity: 0;
+      visibility: hidden;
+      position: relative;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition:
+        grid-template-rows 400ms ease-in-out,
+        opacity 800ms ease-in-out,
+        visibility 800ms ease-in-out;
+
+      .accordionContentContainer {
+        overflow: hidden;
+        .accordionContentContainerWrapper {
+        }
+      }
+    }
+  }
+}
