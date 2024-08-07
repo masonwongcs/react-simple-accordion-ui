@@ -8,6 +8,7 @@ export type AccordionType = {
 
 export interface IAccordionProps {
   allowMultiple?: boolean;
+  className?: string;
   duration?: number;
   easing?: string;
   items: AccordionType[];

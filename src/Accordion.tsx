@@ -109,6 +109,7 @@ const AccordionItem: FC<
 
 const Accordion: FC<IAccordionProps> = ({
   allowMultiple = true,
+  className,
   duration,
   easing,
   items,
@@ -136,7 +137,7 @@ const Accordion: FC<IAccordionProps> = ({
   );
 
   return (
-    <AccordionWrapper className="RSA__AccordionWrapper">
+    <AccordionWrapper className={cx("RSA__AccordionWrapper", className)}>
       {memoizedItems}
     </AccordionWrapper>
   );

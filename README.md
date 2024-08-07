@@ -1,4 +1,4 @@
-# React Simple Accordion
+# React Simple Accordion UI
 
 A flexible and customizable accordion component for React applications.
 
@@ -78,6 +78,44 @@ const App = () => {
 export default App;
 ```
 
+Here are some basic styles for the component.
+
+```scss
+.RSA__AccordionWrapper {
+  &__Item {
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    &__Header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      color: #333;
+
+      > span {
+        margin-left: auto;
+      }
+    }
+
+    &__Content {
+      border-top: 1px solid #ccc;
+
+      &__ContentContainer {
+        &__Wrapper {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+```
+
 ## Props
 
 The Accordion component accepts the following props:
@@ -85,6 +123,7 @@ The Accordion component accepts the following props:
 | Prop            | Type    | Default  | Description                                                                                                     |
 |-----------------|---------|----------|-----------------------------------------------------------------------------------------------------------------|
 | `allowMultiple` | boolean | `true`   | If true, multiple accordion items can be expanded at once. If false, only one item can be expanded at a time.   |
+| `className`     | string  |          | Specify a custom className for the wrapper.                                                                     |
 | `duration`      | number  |          | The duration of the expand/collapse animation in milliseconds. If not provided, no transition is applied.       |
 | `easing`        | string  |          | The easing function for the expand/collapse animation. Any valid CSS transition timing function can be used.    |
 | `items`         | Array   | Required | An array of objects representing the accordion items. Each object should have a `title` and `content` property. |

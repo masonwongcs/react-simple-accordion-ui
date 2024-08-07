@@ -22,6 +22,8 @@ export const AccordionWrapper = styled.section`
         position: relative;
 
         .RSA__AccordionWrapper__Item__Header__Toggle {
+          font-size: initial;
+          font-family: inherit;
           cursor: pointer;
           position: relative;
           width: 100%;
@@ -32,10 +34,12 @@ export const AccordionWrapper = styled.section`
           outline: none;
           display: flex;
           align-items: center;
+          color: currentColor;
 
           .RSA__AccordionWrapper__Item__Header__Toggle__Icon {
             margin-left: auto;
             transition: 200ms ease-in-out;
+            flex: 0 0 24px;
           }
         }
       }
