@@ -1,28 +1,47 @@
 {
   "name": "react-simple-accordion-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/react-simple-accordion-ui.umd.js",
   "module": "./dist/react-simple-accordion-ui.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-simple-accordion-ui.es.js",
-      "require": "./dist/react-simple-accordion-ui.umd.js"
+      "require": "./dist/react-simple-accordion-ui.umd.js",
+      "types": "./dist/index.d.ts"
     }
   },
-  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "keywords": [
+    "accordion",
+    "collapse",
+    "accordion ui",
+    "simple",
+    "react"
+  ],
+  "author": "masonwongcs",
+  "contributors": [
+    {
+      "name": "Mason Wong",
+      "email": "masonwongcs@gmail.com",
+      "url": "https://masonwongcs.github.io"
+    }
+  ],
   "dependencies": {
     "classnames": "^2.5.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sass": "^1.77.8"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "sass": "^1.77.8",
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -35,6 +54,17 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
+    "vite-plugin-css-injected-by-js": "^3.5.1",
     "vite-plugin-dts": "^4.0.0-beta.2"
-  }
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/masonwongcs/react-simple-accordion-ui"
+  },
+  "homepage": "https://react-simple-accordion-ui.vercel.app",
+  "typings": "types/index.d.ts"
 }

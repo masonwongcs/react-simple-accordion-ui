@@ -1,8 +1,8 @@
 import { FC, useCallback, useState, useMemo, memo } from "react";
 import cx from "classnames";
 
-import styles from "./Accordion.module.scss";
 import { IAccordionProps, AccordionType } from "./Accordion.types";
+import { AccordionWrapper } from "./Accordion.styled";
 
 const useAccordion = (allowMultiple: boolean) => {
   const [active, setActive] = useState(new Set<string>());
@@ -44,35 +44,13 @@ const AccordionItem: FC<
     duration,
     easing,
   }) => {
-    const accordionItemClasses = cx(
-      "RSA__AccordionWrapper__Item",
-      styles.accordionItem,
-      { [styles.active]: isActive },
-    );
-
-    const accordionHeaderClasses = cx(
-      "RSA__AccordionWrapper__Item__Header",
-      styles.accordionHeader,
-    );
-
-    const accordionContentClasses = cx(
-      "RSA__AccordionWrapper__Item__Content",
-      styles.accordionContent,
-    );
-
-    const accordionContentContainerClasses = cx(
-      "RSA__AccordionWrapper__Item__Content__ContentContainer",
-      styles.accordionContentContainer,
-    );
-
-    const accordionContentContainerWrapperClasses = cx(
-      "RSA__AccordionWrapper__Item__Content__ContentContainer__Wrapper",
-      styles.accordionContentContainerWrapper,
-    );
+    const accordionItemClasses = cx("RSA__AccordionWrapper__Item", {
+      active: isActive,
+    });
 
     return (
       <div className={accordionItemClasses}>
-        <div className={accordionHeaderClasses}>
+        <div className="RSA__AccordionWrapper__Item__Header">
           {action ? (
             <>
               {title}
@@ -90,11 +68,11 @@ const AccordionItem: FC<
               aria-expanded={isActive}
               aria-label="expand"
               onClick={() => toggleActive(uuid)}
-              className={styles.accordionToggle}
+              className="RSA__AccordionWrapper__Item__Header__Toggle"
             >
               {title}
               <svg
-                className={styles.accordionToggleIcon}
+                className="RSA__AccordionWrapper__Item__Header__Toggle__Icon"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -111,15 +89,15 @@ const AccordionItem: FC<
           )}
         </div>
         <div
-          className={accordionContentClasses}
+          className="RSA__AccordionWrapper__Item__Content"
           aria-hidden={!isActive}
           style={{
             transitionTimingFunction: easing,
             transitionDuration: duration ? `${duration}ms` : undefined,
           }}
         >
-          <div className={accordionContentContainerClasses}>
-            <div className={accordionContentContainerWrapperClasses}>
+          <div className="RSA__AccordionWrapper__Item__Content__ContentContainer">
+            <div className="RSA__AccordionWrapper__Item__Content__ContentContainer__Wrapper">
               {content}
             </div>
           </div>
@@ -136,11 +114,6 @@ const Accordion: FC<IAccordionProps> = ({
   items,
 }) => {
   const { active, toggleActive } = useAccordion(allowMultiple);
-
-  const accordionWrapperClasses = cx(
-    "RSA__AccordionWrapper",
-    styles.accordionWrapper,
-  );
 
   const memoizedItems = useMemo(
     () =>
@@ -162,7 +135,11 @@ const Accordion: FC<IAccordionProps> = ({
     [items, active, toggleActive, duration, easing],
   );
 
-  return <section className={accordionWrapperClasses}>{memoizedItems}</section>;
+  return (
+    <AccordionWrapper className="RSA__AccordionWrapper">
+      {memoizedItems}
+    </AccordionWrapper>
+  );
 };
 
 export { Accordion };
